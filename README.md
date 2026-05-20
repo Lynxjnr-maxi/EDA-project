@@ -14,6 +14,6 @@ The SQL queries utilized to inspect and perform quality checks can be found [her
 
 The SQL queries used to create a customer report can be found [here](https://github.com/Lynxjnr-maxi/EDA-project/blob/9edc7870bee2309165a62bbdcba98d36cbbbbb41/Cutomer%20Report.sql).
 
-The SQL queries used to create a product report can be found here.
+The SQL queries used to create a product report can be found [here](https://github.com/Lynxjnr-maxi/EDA-project/blob/6eaf8f920e6f4023470fe018a91a3b6acdf9f536/Product%20Report.sql).
 
 The SQL queries regarding various business questions can be found here .
