@@ -17,3 +17,7 @@ The SQL queries used to create a customer report can be found [here](https://git
 The SQL queries used to create a product report can be found [here](https://github.com/Lynxjnr-maxi/EDA-project/blob/6eaf8f920e6f4023470fe018a91a3b6acdf9f536/Product%20Report.sql).
 
 The SQL queries regarding various business questions can be found [here](https://github.com/Lynxjnr-maxi/EDA-project/blob/1dfdc687118d62d81ec4cef84831a48db26f5115/Business%20Metrics.sql).
+
+# Data Structure 
+XYZ company, as seen below, contains four tables: Customers, Product, Sales, and Store, with a total count of 125,005 rows and 25 columns.
+
