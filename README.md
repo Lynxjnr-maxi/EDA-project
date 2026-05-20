@@ -1,7 +1,7 @@
 # Project Background
 XYZ company is a full-range lifestyle brand headquartered in Portugal. It offers footwear, accessories, and clothes through multiple channels-online sites, physical stores, and third-party suppliers.
 
-As the company expands, it generates  significant amounts of data in its sales operations, marketing efforts, and product performance that it seeks to use to improve its overall retail value. This project thoroughly analyzes and synthesizes this data to uncover critical insights that will improve XYZ's commercial success.
+As the company expands, it generates  significant amounts of data in its sales operations, marketing efforts, and product performance that it seeks to use to improve its overall retail value. This project analyzes and synthesizes data to uncover insights to improve XYZ's commercial success.
 
 ### Insights and Recommendations are provided in the following areas:
 
