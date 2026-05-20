@@ -10,7 +10,7 @@ As the company expands, it generates  significant amounts of data in its sales o
 - Evaluate Discount Strategies: The effectiveness through Price Elasticity of Demand(PED), impact on revenue, and profitability.
 - Product Level Performance: Through metrics like gross margin, return rates, revenue contribution, and the listing lifespan.
   
-The SQL queries utilized to inspect and perform quality checks can be found here .
+The SQL queries utilized to inspect and perform quality checks can be found [here](https://github.com/Lynxjnr-maxi/EDA-project/blob/1f1ebe7e8ac69392c419473a20c8ffe393d63c41/Data%20Cleaning.sql).
 
 The SQL queries used to create a customer report can be found here .
 
