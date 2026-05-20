@@ -22,5 +22,6 @@ The SQL queries regarding various business questions can be found [here](https:/
 XYZ database structure, as seen below, contains four tables: Customers, Product, Sales, and Store, with a total count of 125,005 rows and 25 columns.
 
 
-     ![ERD Diagram](https://github.com/Lynxjnr-maxi/EDA-project/blob/9027004f12885bdbb5a3eaac74090661e079cf89/Fashion%20Data%20ERD.png)
+   <img width="2138" height="1253" alt="Fashion Data ERD (1) (2)" src="https://github.com/user-attachments/assets/ddfcd01a-415c-43fd-88b8-95639f35ff57" />
+
 
