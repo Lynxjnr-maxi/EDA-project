@@ -17,12 +17,12 @@
   formatted_kpis as (
   select 
   gross_revenue,net_revenue,Cost_Of_Goods_Sold,net_quantity_sold,total_quantity_sold,total_quantity_returned,year,
-        format(gross_revenue,'c','en-us') as gross_revenue_frmt,
-        format(net_revenue,'c','en-us') as net_revenue_frmt,
-        FORMAT(net_quantity_sold,'N0','en-us') as net_quantity_sold_frmt,
-        format(total_quantity_sold,'N0','en-us') as total_quantity_sold_frmt,
-        format(total_quantity_returned,'N0','en-us') as total_quantity_returned_frmt,
-        format((total_quantity_returned* 1.0 /nullif( total_quantity_sold,0)),'P','en-us') as return_rate_frmt,
+        format(gross_revenue,'c','pt-PT') as gross_revenue_frmt,
+        format(net_revenue,'c','pt-PT') as net_revenue_frmt,
+        FORMAT(net_quantity_sold,'N0','pt-PT') as net_quantity_sold_frmt,
+        format(total_quantity_sold,'N0','pt-PT') as total_quantity_sold_frmt,
+        format(total_quantity_returned,'N0','pt-PT') as total_quantity_returned_frmt,
+        format((total_quantity_returned* 1.0 /nullif( total_quantity_sold,0)),'P','pt-PT') as return_rate_frmt,
         (net_revenue - Cost_Of_Goods_Sold ) as gross_margin,
 case when net_revenue > 0 
      then (net_revenue - Cost_Of_Goods_Sold) *1.00 / net_revenue
@@ -38,9 +38,9 @@ real_margins_kpis as (
 select 
 year,gross_revenue_frmt,net_revenue_frmt,net_quantity_sold_frmt,total_quantity_sold_frmt,total_quantity_returned_frmt,
 return_rate_frmt,
-FORMAT(gross_margin_ratio, 'P', 'en-US') AS gross_margin_percent,
-FORMAT(gross_margin, 'C', 'en-US') AS gross_margin_frmt,
-format(markup_ratio, 'P', 'en-us') as markup_pct
+FORMAT(gross_margin_ratio, 'P', 'pt-PT') AS gross_margin_percent,
+FORMAT(gross_margin, 'C', 'pt-PT') AS gross_margin_frmt,
+format(markup_ratio, 'P', 'pt-PT') as markup_pct
 from formatted_kpis )
 select* from real_margins_kpis
 
@@ -127,7 +127,7 @@ on p.product_id = t.product_id
 
 --- Revenue by category
 select distinct p.category,year(date) as year,
-format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US') 
+format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT') 
 as revenue_by_category,count(distinct t.customer_id) as total_customers,
 count(distinct p.product_id) as total_products
 from dbo.sales_data t
@@ -138,7 +138,7 @@ order by year(date)
 
 --- Revenue by region
 select distinct s.region,year(date) as year,
-format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US') 
+format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT') 
 as revenue_by_region,count(distinct t.customer_id) as total_customers,
 count(distinct p.product_id) as total_products
 from dbo.sales_data t
@@ -151,7 +151,7 @@ order by year(date) asc
  
  --- Revenue by season
  select distinct p.season,year(date) as year,count(distinct t.customer_id) as total_customers,
- format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US')
+ format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT')
  as revenue_by_season,count(distinct p.product_id) as total_products
  from dbo.sales_data t
  inner join dbo.product_data p
@@ -161,7 +161,7 @@ order by year(date) asc
 
  --- Revenue by supplier
  select distinct p.supplier,year(t.date) as year,count(distinct t.customer_id) as total_customers,
- format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US')
+ format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT')
  as revenue_by_supplier,count(distinct p.product_id) as total_products
  from dbo.sales_data t
  inner join dbo.product_data p
@@ -178,7 +178,7 @@ order by year(date) asc
       else 'Unknown'
       end as age_range,
 count(distinct t.customer_id) as total_customers,
-format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US')
+format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT')
  as revenue_by_age_range,count(distinct p.product_id) as total_products,
  round(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)) 
  / count(distinct t.customer_id), 2) as average_revenue_per_customer
