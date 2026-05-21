@@ -121,21 +121,20 @@ from dbo.sales_data t
 inner join dbo.product_data p 
 on p.product_id = t.product_id
 
-
 --- Revenue by category
-select distinct p.category,
-format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT') 
+select distinct p.category,year(date) as year,
+format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US') 
 as revenue_by_category,count(distinct t.customer_id) as total_customers,
 count(distinct p.product_id) as total_products
 from dbo.sales_data t
 inner join dbo.product_data p
 on p.product_id = t.product_id
-group by p.category
-order by revenue_by_category asc 
+group by p.category,year(date)
+order by year(date) 
 
 --- Revenue by region
-select distinct s.region,
-format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT') 
+select distinct s.region,year(date) as year,
+format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US') 
 as revenue_by_region,count(distinct t.customer_id) as total_customers,
 count(distinct p.product_id) as total_products
 from dbo.sales_data t
@@ -143,40 +142,39 @@ inner join dbo.product_data p
 on p.product_id = t.product_id
 inner join dbo.store_data s
 on s.store_id = t.store_id
-group by s.region
-order by revenue_by_region asc
-
-
+group by s.region,year(date)
+order by year(date) asc
  
  --- Revenue by season
- select distinct p.season,count(distinct t.customer_id) as total_customers,
- format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT')
+ select distinct p.season,year(date) as year,count(distinct t.customer_id) as total_customers,
+ format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US')
  as revenue_by_season,count(distinct p.product_id) as total_products
  from dbo.sales_data t
  inner join dbo.product_data p
  on p.product_id = t.product_id
- group by p.season
- order by revenue_by_season asc
+ group by p.season,year(date)
+ order by year(date)
 
  --- Revenue by supplier
- select distinct p.supplier, count(distinct t.customer_id) as total_customers,
- format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT')
+ select distinct p.supplier,year(t.date) as year,count(distinct t.customer_id) as total_customers,
+ format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US')
  as revenue_by_supplier,count(distinct p.product_id) as total_products
  from dbo.sales_data t
  inner join dbo.product_data p
  on p.product_id = t.product_id
- group by p.supplier
- order by revenue_by_supplier desc
+ group by p.supplier,year(t.date)
+ order by year(date)
 
  --- Revenue by age range
- select case when age < 30 then 'Youth'
+ select year(t.date) as year,
+ case when age < 30 then 'Youth'
       when age between 30 and 45 then 'Adults'
       When age between 45 and 60  then 'Old'
       when age >60 then 'Seniors'
       else 'Unknown'
       end as age_range,
 count(distinct t.customer_id) as total_customers,
-format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT')
+format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US')
  as revenue_by_age_range,count(distinct p.product_id) as total_products
  from dbo.sales_data t
  inner join dbo.product_data p
@@ -188,10 +186,11 @@ format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount 
       When age between 45 and 60  then 'Old'
       when age >60 then 'Seniors'
       else 'Unknown'
-      end
+      end,year(t.date)
+order by year(t.date)
 
 --- Revenue by store
- select distinct s.store_name,count(distinct t.customer_id) as total_customers,
+ select distinct  s.store_name,year(date) as year,count(distinct t.customer_id) as total_customers,
  format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'pt-PT')
  as revenue_by_store,count(distinct p.product_id) as total_products
  from dbo.sales_data t
@@ -200,9 +199,8 @@ format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount 
  left join dbo.store_data s
  on s.store_id = t.store_id
  where store_name is not null
- group by s.store_name
- order by revenue_by_store desc
-
+ group by  s.store_name,year(date)
+ order by year(date)
  
 --- year to year analysis 
 select count(distinct(month(date)))
