@@ -27,12 +27,12 @@ The XYZ database structure, as shown below, contains four tables: Customers, Pro
 # Executive Summary
 ## Overview Of Findings
 Between 2020 and 2024, overall net revenue fluctuated due to external market conditions and shifting customer patterns.
-Revenue declined from €2.27 M in 2020 to €2.22 M in 2022, reflecting pandemic‑related disruptions, then rebounded by 3% in 2023 (€2.29 M) as post‑pandemic normalcy returned. A mild contraction in 2024 (€2.25 M) suggests renewed pressure from supply or pricing factors.
+Revenue declined from €2.27 M in 2020 to €2.22 M in 2022, reflecting pandemic‑related disruptions and the high return rate 4.15%, then rebounded by 3% in 2023 (€2.29 M) as post‑pandemic normalcy returned. A mild contraction in 2024 (€2.25 M) suggests renewed pressure from supply or pricing factors.
 Despite this, the customer base remained stable throughout, averaging 7900 per year - a clear sign of strong retention and brand loyalty.
 However, the Average Transaction Value(ATV) oscillated noticeably: when ATV dipped, so did the revenue and vice versa.
 This pattern indicates that the company's performance was influenced more by the change in spending behavior rather than the number of transactions or the customer count.
 
-<img width="1330" height="122" alt="Screenshot 2026-05-21 111908" src="https://github.com/user-attachments/assets/f20a6e8c-8067-4bca-9f55-20e3d7afa5b0" />
+<img width=100% height=auto alt="Screenshot 2026-05-21 111908" src="https://github.com/user-attachments/assets/f20a6e8c-8067-4bca-9f55-20e3d7afa5b0" />
 
 More queries concerning the revenue per category, season, supplier, store name, and Cost Of Goods Sold can be found [here](https://github.com/Lynxjnr-maxi/EDA-project/blob/1dfdc687118d62d81ec4cef84831a48db26f5115/Business%20Metrics.sql).
 
@@ -42,17 +42,28 @@ More queries concerning the revenue per category, season, supplier, store name, 
 - PED average of +1.02 is technically elastic but contextually ineffective due to the drops in quantity purchased when discounted.
 - Conclusion: Discount eroded margins i.e 5.5% of total revenue, without expanding the demand (quantity purchased), hence the promotion did not meet its intended impact.
 
-<img width="1000" height="122" alt="Screenshot 2026-05-21 122506" src="https://github.com/user-attachments/assets/6372f288-45da-4567-9980-53ec2a4e93a3" />
+<img width=200% height=100% alt="Screenshot 2026-05-21 122506" src="https://github.com/user-attachments/assets/6372f288-45da-4567-9980-53ec2a4e93a3" />
 
 ## Product Performance
 
 With a cumulative total of 24,911 products and 5 categories, XYZ product portfolio is vast.
-- The Accessories category stands out, leading in both revenue generation (20.17%), client engagement, as well as products stocked.
-- 
-
+- The Accessories category stands out, leading in both revenue generation (20.17%), client engagement, as well as products stocked
+  while the Dresses category has the highest gross margin of 24.69%.
+- Lisbon Metropolitan Area got the lowest sales of all four regions, accounting for only 16% of sales, while the rest divide the pie almost equally.
+  
 # Recommendations
 Based on the uncovered insights, the following recommendations have been provided:
-- 
+- Strategic Discounting  
+The PED value of +1.10 suggests elasticity, but in practice, discounts were ineffective because the quantity of products purchased fell. Blanket price cuts should be avoided. Instead, implement targeted discounts such as one‑on‑one offers for repeat customers, loyalty rewards, or personalized bundles that protect margins while rewarding high‑value buyers.
+- Capitalize on High‑Margin Products  
+Certain products, like Product ID 9535, demonstrated viable revenue despite being stocked only once. Similarly, dresses show low COGS and high margins. These categories should be prioritized in marketing campaigns and inventory planning to maximize profitability.
+- Reassess 2024 Pricing Strategy  
+The −2% revenue drop in 2024 occurred despite favorable market conditions. The only significant internal change was a reduction in listed products (from 9,101 to 8,969). This suggests profitable items were pulled prematurely. Pricing and product availability should be re‑evaluated to ensure that high‑performing products remain accessible to customers.
+
+# Assumptions and Caveats
+Throughout the analysis, multiple assumptions were made to manage challenges with the data. These assumptions and caveats are noted below:
+- The Null values were not included in the calculations
+- The 999 store_id in the dbo.sales_data table was missing in the dbo.store_data table, hence it was not included in the calculations.
 
 
 
