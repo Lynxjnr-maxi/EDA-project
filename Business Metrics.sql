@@ -1,8 +1,8 @@
 
  --- MEASURES EXPLORATION
  --- 1.Gross and Net Revenue,Gross Margin(profit) and Percentage Margin(how profitable),net quantity sold,markup
-  with sales_kpis as (
-  select sum(t.quantity) as total_quantity_sold,
+   with sales_kpis as (
+  select distinct year(date) as year, sum(t.quantity) as total_quantity_sold,
         sum(coalesce(t.returned,0)) as total_quantity_returned,
        sum(t.quantity - coalesce(t.returned,0)) as net_quantity_sold,
        sum (p.list_price * t.quantity) as gross_revenue,
@@ -12,16 +12,17 @@
     from dbo.product_data p
           inner join dbo.sales_data t on
           p.product_id = t.product_id
+    group by year(date)
   ),
   formatted_kpis as (
   select 
-  gross_revenue,net_revenue,Cost_Of_Goods_Sold,net_quantity_sold,total_quantity_sold,total_quantity_returned,
-        format(gross_revenue,'c','pt-PT') as gross_revenue_frmt,
-        format(net_revenue, 'c',' pt-PT') as net_revenue_frmt,
-        FORMAT(net_quantity_sold,'N0','pt-PT') as net_quantity_sold_frmt,
-        format(total_quantity_sold,'N0','pt-PT') as total_quantity_sold_frmt,
-        format(total_quantity_returned,'N0','pt-PT' as total_quantity_returned_frmt,
-        format((total_quantity_returned* 1.0 /nullif( total_quantity_sold,0)),'P','pt-PT') as return_rate_frmt,
+  gross_revenue,net_revenue,Cost_Of_Goods_Sold,net_quantity_sold,total_quantity_sold,total_quantity_returned,year,
+        format(gross_revenue,'c','en-us') as gross_revenue_frmt,
+        format(net_revenue,'c','en-us') as net_revenue_frmt,
+        FORMAT(net_quantity_sold,'N0','en-us') as net_quantity_sold_frmt,
+        format(total_quantity_sold,'N0','en-us') as total_quantity_sold_frmt,
+        format(total_quantity_returned,'N0','en-us') as total_quantity_returned_frmt,
+        format((total_quantity_returned* 1.0 /nullif( total_quantity_sold,0)),'P','en-us') as return_rate_frmt,
         (net_revenue - Cost_Of_Goods_Sold ) as gross_margin,
 case when net_revenue > 0 
      then (net_revenue - Cost_Of_Goods_Sold) *1.00 / net_revenue
@@ -35,11 +36,11 @@ from sales_kpis
 ),
 real_margins_kpis as (
 select 
-gross_revenue_frmt,net_revenue_frmt,net_quantity_sold_frmt,total_quantity_sold_frmt,total_quantity_returned_frmt,
+year,gross_revenue_frmt,net_revenue_frmt,net_quantity_sold_frmt,total_quantity_sold_frmt,total_quantity_returned_frmt,
 return_rate_frmt,
-FORMAT(gross_margin_ratio, 'P', 'pt-PT') AS gross_margin_percent,
-FORMAT(gross_margin, 'C', 'pt-PT') AS gross_margin_frmt,
-format(markup_ratio, 'P', 'pt-PT') as markup_pct
+FORMAT(gross_margin_ratio, 'P', 'en-US') AS gross_margin_percent,
+FORMAT(gross_margin, 'C', 'en-US') AS gross_margin_frmt,
+format(markup_ratio, 'P', 'en-us') as markup_pct
 from formatted_kpis )
 select* from real_margins_kpis
 
