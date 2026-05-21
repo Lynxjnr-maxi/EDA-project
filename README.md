@@ -50,6 +50,15 @@ With a cumulative total of 24,911 products and 5 categories, XYZ product portfol
 - The Accessories category stands out, leading in both revenue generation (20.17%), client engagement, as well as products stocked
   while the Dresses category has the highest gross margin of 24.69%.
 - Lisbon Metropolitan Area got the lowest sales of all four regions, accounting for only 16% of sales, while the rest divide the pie almost equally.
+
+ # Customer Behavior Analysis
+- XYZ’s clientele spans a wide age range, from 16 to 69 years old.
+- Customer retention is strong, with 77% of customers remaining for more than a year, highlighting loyalty and sustained engagement.
+- Revenue contribution by age group shows clear differences in purchasing power:
+    - Adults: 28.8% — the largest share, driven by higher disposable income and consistent purchasing.
+    - Old: 26.1% — a stable, high‑value segment.
+    - Youth: 24.7% — important for growth and future retention.
+    - Seniors: 16% — the smallest share, but still a meaningful contributor.
   
 # Recommendations
 Based on the uncovered insights, the following recommendations have been provided:
@@ -59,7 +68,10 @@ The PED value of +1.10 suggests elasticity, but in practice, discounts were inef
 Certain products, like Product ID 9535, demonstrated viable revenue despite being stocked only once. Similarly, dresses show low COGS and high margins. These categories should be prioritized in marketing campaigns and inventory planning to maximize profitability.
 - Reassess 2024 Pricing Strategy  
 The −2% revenue drop in 2024 occurred despite favorable market conditions. The only significant internal change was a reduction in listed products (from 9,101 to 8,969). This suggests profitable items were pulled prematurely. Pricing and product availability should be re‑evaluated to ensure that high‑performing products remain accessible to customers.
-
+- Although seniors contribute the least revenue, they represent a strategic opportunity. This can be exploited by:
+     - Product tailoring of comfortable footwear and accessories designed for practicality.
+     - Simplifying online navigation and offering personalized support in physical stores to make shopping easier
+ 
 # Assumptions and Caveats
 Throughout the analysis, multiple assumptions were made to manage challenges with the data. These assumptions and caveats are noted below:
 - The Null values were not included in the calculations
