@@ -1,7 +1,7 @@
 # Project Background
 XYZ company is a full-range lifestyle brand headquartered in Portugal. It offers footwear, accessories, and clothes through multiple channels-online sites, physical stores, and third-party suppliers.
 
-As the company expands, it generates  significant amounts of data in its sales operations, marketing efforts, and product performance that it seeks to use to improve its overall retail value. This project analyzes and synthesizes this data to uncover insights in order to improve XYZ's commercial success.
+As the company expands, it generates  significant amounts of data in its sales operations, marketing efforts, and product performance that it seeks to use to improve its overall retail value. This project leverages SQL-based exploration to analyze and synthesize this data to uncover insights in order to improve XYZ's commercial success.
 
 ### Insights and Recommendations are provided in the following areas:
 
@@ -32,9 +32,31 @@ Despite this, the customer base remained stable throughout, averaging 7900 per y
 However, the Average Transaction Value(ATV) oscillated noticeably: when ATV dipped, so did the revenue and vice versa.
 This pattern indicates that the company's performance was influenced more by the change in spending behavior rather than the number of transactions or the customer count.
 
-<img width="1001" height="114" alt="Screenshot 2026-05-21 111908" src="https://github.com/user-attachments/assets/f20a6e8c-8067-4bca-9f55-20e3d7afa5b0" />
+<img width="1330" height="122" alt="Screenshot 2026-05-21 111908" src="https://github.com/user-attachments/assets/f20a6e8c-8067-4bca-9f55-20e3d7afa5b0" />
 
 More queries concerning the revenue per category, season, supplier, store name, and Cost Of Goods Sold can be found [here](https://github.com/Lynxjnr-maxi/EDA-project/blob/1dfdc687118d62d81ec4cef84831a48db26f5115/Business%20Metrics.sql).
 
 ## Discount Strategies
+- Full-price buyers: stable and high- value segment
+-  Discount buyers: smaller group, lower spending intensity 
+- PED average of +1.02 is technically elastic but contextually ineffective due to the drops in quantity purchased when discounted.
+- Conclusion: Discount eroded margins i.e 5.5% of total revenue, without expanding the demand (quantity purchased), hence the promotion did not meet its intended impact.
+
+<img width="1000" height="122" alt="Screenshot 2026-05-21 122506" src="https://github.com/user-attachments/assets/6372f288-45da-4567-9980-53ec2a4e93a3" />
+
+## Product Performance
+
+With a cumulative total of 24,911 products and 5 categories, XYZ product portfolio is vast.
+- The Accessories category stands out, leading in both revenue generation (20.17%), client engagement, as well as products stocked.
+- 
+
+# Recommendations
+Based on the uncovered insights, the following recommendations have been provided:
+- 
+
+
+
+
+
+
 
