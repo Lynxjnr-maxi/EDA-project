@@ -211,14 +211,17 @@ where date like '2024%'
 --- previous year earnings compared to this year
 with yearlyfunds as (
 select distinct year(date) as year,sum((quantity -coalesce(returned,0)) *list_price *(1-discount/100.0))
-as current_revenue
+as current_revenue,count(distinct customer_id) as total_customers,count(distinct t.product_id) as total_products,
+count(distinct transaction_id) as total_transactions
 from dbo.sales_data t
 inner join dbo.product_data p
 on p.product_id = t.product_id
 group by  year(date)
 ),
 year_aggregations as  (
-select year,current_revenue,
+select year,
+format(current_revenue, 'C', 'pt-PT') as current_revenue,total_customers,total_products,total_transactions,
+current_revenue / total_transactions as average_transaction_value,
 LAG(current_revenue) OVER (ORDER BY year) as previous_year_revenue,
 current_revenue - LAG(current_revenue) OVER (ORDER BY YEAR) as difference_revenue,
 case when current_revenue - LAG(current_revenue) OVER (ORDER BY YEAR) > 0 then 'good_year'
@@ -228,9 +231,15 @@ end year_comparison,
  (current_revenue - LAG(current_revenue) OVER (ORDER BY year)) * 100.0/LAG(current_revenue) OVER (ORDER BY year) 
  as yoy_growth_pct
 from yearlyfunds
-group by year,current_revenue
+group by year,current_revenue,total_customers,total_products,total_transactions
 )
-select* from year_aggregations
+select year, current_revenue,
+format(previous_year_revenue, 'C', 'pt-PT') as previous_year_revenue,
+format(difference_revenue, 'C', 'pt-PT') as difference_revenue,
+year_comparison,
+round(yoy_growth_pct, 2) as yoy_growth_pct,
+total_customers,total_products,total_transactions,average_transaction_value
+from year_aggregations
 
 GO
 
