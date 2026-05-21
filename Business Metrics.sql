@@ -70,26 +70,28 @@ ON p.product_id = t.product_id
 
 --- Price elasticity of demand (PED) = % change in quantity demanded / % change in price
 with Full_price as (
-select count(distinct customer_id) as count_customers_full_price,sum(quantity-coalesce(returned,0)) 
+select distinct year(date) as year, count(distinct customer_id) as count_customers_full_price,sum(quantity-coalesce(returned,0)) 
 as net_quantity_full_price,
 avg(list_price) as avg_price_full_price
 from dbo.sales_data t
 inner join dbo.product_data p
 on p.product_id = t.product_id
 where discount=0
+group by year(date)
 ),
 discounted as(
-select count(distinct customer_id) as count_customers_discounted,sum(quantity-coalesce(returned,0))
+select distinct year(date) as year, count(distinct customer_id) as count_customers_discounted,sum(quantity-coalesce(returned,0))
 as net_quantity_discounted,
 avg(list_price * (1 - discount / 100.0)) as avg_price_discounted
 from dbo.sales_data t
 inner join dbo.product_data p
 on p.product_id = t.product_id
 where discount>0
+group by year(date)
 ),
 PED_calculation as (
-select f.count_customers_full_price, f.net_quantity_full_price, f.avg_price_full_price,
-d.count_customers_discounted, d.net_quantity_discounted, d.avg_price_discounted,
+select f.year, f.count_customers_full_price, d.count_customers_discounted,f.net_quantity_full_price, d.net_quantity_discounted,
+f.avg_price_full_price,d.avg_price_discounted,
 --- Calculate percentage change in quantity 
 case when f.net_quantity_full_price > 0 then 
      (d.net_quantity_discounted - f.net_quantity_full_price) * 100.0 / f.net_quantity_full_price
@@ -107,10 +109,12 @@ case when f.avg_price_full_price > 0 and f.net_quantity_full_price > 0
 else 0
 end as price_elasticity_of_demand
 from Full_price f
-cross join discounted d
+left join discounted d
+on f.year = d.year
 )   
 select * from PED_calculation
-
+order by year asc
+    
 --- Average Transaction Value (ATV)
 select sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)) 
 as net_revenue,
