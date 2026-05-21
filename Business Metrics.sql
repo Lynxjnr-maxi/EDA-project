@@ -166,7 +166,7 @@ order by year(date) asc
  order by year(date)
 
  --- Revenue by age range
- select year(t.date) as year,
+  select year(t.date) as year,
  case when age < 30 then 'Youth'
       when age between 30 and 45 then 'Adults'
       When age between 45 and 60  then 'Old'
@@ -175,7 +175,9 @@ order by year(date) asc
       end as age_range,
 count(distinct t.customer_id) as total_customers,
 format(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)), 'C', 'en-US')
- as revenue_by_age_range,count(distinct p.product_id) as total_products
+ as revenue_by_age_range,count(distinct p.product_id) as total_products,
+ round(sum(p.list_price * (t.quantity-coalesce(t.returned,0)) * (1 - t.discount / 100.0)) 
+ / count(distinct t.customer_id), 2) as average_revenue_per_customer
  from dbo.sales_data t
  inner join dbo.product_data p
  on p.product_id = t.product_id
