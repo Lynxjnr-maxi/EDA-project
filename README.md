@@ -34,4 +34,4 @@ This pattern indicates that the company's performance was influenced more by the
 
 <img width="1001" height="114" alt="Screenshot 2026-05-21 111908" src="https://github.com/user-attachments/assets/f20a6e8c-8067-4bca-9f55-20e3d7afa5b0" />
 
-
+More queries concerning the revenue per category, season, supplier, store name, and Cost Of Goods Sold can be found [here](https://github.com/Lynxjnr-maxi/EDA-project/blob/1dfdc687118d62d81ec4cef84831a48db26f5115/Business%20Metrics.sql).
