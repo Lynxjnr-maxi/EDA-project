@@ -1,7 +1,7 @@
 --- customer report
 --- 1. Base query for customer report with key metrics and dimensions
---- 2. Segment customers into categories based on their purchasing behavior,age group and repeating customers
---- 3.customer level metrics:
+--- 2. Segment customers into categories based on their purchasing behavior, age group, and repeating customers
+--- 3. customer level metrics:
 --- net quantity purchased(total quantity sold - total quantity returned)
 --- total transactions
 --- total discount received
