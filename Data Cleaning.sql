@@ -15,7 +15,7 @@ from dbo.customer_data
 select distinct gender from dbo.customer_data
 -- replace '???' with NULL in table
 update dbo.customer_data
-set gender= replace (gender,'???','NULL')
+set gender= gender = NULL
 where gender='???'
 
 select distinct city from dbo.customer_data
