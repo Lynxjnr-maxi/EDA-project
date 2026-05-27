@@ -173,7 +173,7 @@ order by year(date) asc
   select year(t.date) as year,
  case when age < 30 then 'Youth'
       when age between 30 and 45 then 'Adults'
-      When age between 45 and 60  then 'Old'
+      When age between 46 and 60  then 'Old'
       when age >60 then 'Seniors'
       else 'Unknown'
       end as age_range,
