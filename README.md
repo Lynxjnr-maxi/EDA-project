@@ -30,7 +30,7 @@ Between 2020 and 2024, overall net revenue fluctuated due to external market con
 Revenue declined from €2.27 M in 2020 to €2.22 M in 2022, reflecting pandemic‑related disruptions and the high return rate 4.15%, then rebounded by 3% in 2023 (€2.29 M) as post‑pandemic normalcy returned. A mild contraction in 2024 (€2.25 M) suggests renewed pressure from supply or pricing factors.
 Despite this, the customer base remained stable throughout, averaging 7900 per year - a clear sign of strong retention and brand loyalty.
 However, the Average Transaction Value(ATV) oscillated noticeably: when ATV dipped, so did the revenue and vice versa.
-This pattern indicates that the company's performance was influenced more by the change in spending behavior rather than the number of transactions or the customer count.
+This pattern indicates that the company's performance was influenced more by changes in spending behavior rather than the number of transactions or the customer count.
 
 <img width=100% height=auto alt="Screenshot 2026-05-21 111908" src="https://github.com/user-attachments/assets/f20a6e8c-8067-4bca-9f55-20e3d7afa5b0" />
 
@@ -38,9 +38,10 @@ More queries concerning the revenue per category, season, supplier, store name, 
 
 ## Discount Strategies
 - Full-price buyers: stable and high- value segment
--  Discount buyers: smaller group, lower spending intensity 
+-  Discount buyers: smaller group, lower spending intensity
 - PED average of +1.02 is technically elastic but contextually ineffective due to the drops in quantity purchased when discounted.
-- Conclusion: Discount eroded margins i.e 5.5% of total revenue, without expanding the demand (quantity purchased), hence the promotion did not meet its intended impact.
+- Furthermore, looking at customer intensity, our Full-Price segment averages 2.80 units per customer, while the Discount segment converts at a lower 2.67 units per customer. Lowering prices did not incentivize deeper shopping carts.
+- Conclusion: Discount eroded margins, i.e 5.5% of total revenue, without expanding demand (quantity purchased); hence, the promotion did not meet its intended impact.
 
 <img width=200% height=100% alt="Screenshot 2026-05-21 122506" src="https://github.com/user-attachments/assets/6372f288-45da-4567-9980-53ec2a4e93a3" />
 
